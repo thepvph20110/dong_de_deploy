@@ -1,5 +1,5 @@
 <!-- tab 6 start -->
-var urlNuocUong = "http://localhost:8081/api/v1/admin/nuoc-uong/find-all";
+var urlNuocUong = "/api/v1/admin/nuoc-uong/find-all";
 var tabNuocUong = new Vue({
     el: ".tabNuocUong",
     data: {
@@ -41,7 +41,7 @@ var tabNuocUong = new Vue({
                     try {
                         $.ajax({
                             type: "POST",
-                            url: "http://localhost:8081/api/v1/admin/nuoc-uong/save",
+                            url: "/api/v1/admin/nuoc-uong/save",
                             contentType: "application/json",
                             data: JSON.stringify({
                                 tenNuocUong: tabNuocUong.NuocUong.tenNuocUong,
@@ -81,7 +81,7 @@ var tabNuocUong = new Vue({
                     try {
                         $.ajax({
                             type: "PUT",
-                            url: "http://localhost:8081/api/v1/admin/nuoc-uong/update",
+                            url: "/api/v1/admin/nuoc-uong/update",
                             contentType: "application/json",
                             data: JSON.stringify({
                                 id: tabNuocUong.detailNuocUongEntity.id,
@@ -121,7 +121,7 @@ var tabNuocUong = new Vue({
                     try {
                         $.ajax({
                             type: "DELETE",
-                            url: "http://localhost:8081/api/v1/admin/nuoc-uong/delete/" + id,
+                            url: "/api/v1/admin/nuoc-uong/delete/" + id,
                             success: function (response) {
                                 if (response.statusCode === 'OK') {
                                     callApiGetNuocUong(urlNuocUong);
@@ -188,7 +188,7 @@ var tabNuocUong = new Vue({
                     if (result.isConfirmed) {
                         $.ajax({
                             type: "POST",
-                            url: "http://localhost:8081/api/v1/admin/nuoc-uong/import",
+                            url: "/api/v1/admin/nuoc-uong/import",
                             dataType: "json",
                             contentType: false,
                             processData: false,
@@ -225,7 +225,7 @@ var tabNuocUong = new Vue({
         uploadImage() {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8081/api/v1/admin/nuoc-uong/upload-image",
+                url: "/api/v1/admin/nuoc-uong/upload-image",
                 data: tabNuocUong.imageFile,
                 processData: false, // Important!
                 contentType: false, // Important!
@@ -310,7 +310,7 @@ var tabNuocUong = new Vue({
         detailNuocUong(id) {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8081/api/v1/admin/nuoc-uong/find/" + id,
+                url: "/api/v1/admin/nuoc-uong/find/" + id,
                 success: function (response) {
                     tabNuocUong.detailNuocUongEntity.id = response.content.id;
                     tabNuocUong.detailNuocUongEntity.tenNuocUong = response.content.tenNuocUong;
@@ -329,23 +329,23 @@ var tabNuocUong = new Vue({
         },
         tiemKiemTheoTenNuocUong(event) {
 
-            var url = "http://localhost:8081/api/v1/admin/nuoc-uong/find-by-name?tenNuocUong=" + event.target.value;
+            var url = "/api/v1/admin/nuoc-uong/find-by-name?tenNuocUong=" + event.target.value;
             callApiGetNuocUong(url);
             tabNuocUong.indexSearchNuocUong = 1;
 
             if (event.target.value === "" || event.target.value == null) {
                 tabNuocUong.indexSearchNuocUong = 0;
-                callApiGetNuocUong("http://localhost:8081/api/v1/admin/nuoc-uong/find-all");
+                callApiGetNuocUong("/api/v1/admin/nuoc-uong/find-all");
             }
         },
         pageTionNU(value) {
             if (parseInt(tabNuocUong.indexSearchNuocUong) === 1) {
-                urlNuocUong = "http://localhost:8081/api/v1/admin/nuoc-uong/find-by-name?tenNuocUong=" +
+                urlNuocUong = "/api/v1/admin/nuoc-uong/find-by-name?tenNuocUong=" +
                     tabNuocUong.tenNuocUongSearch +
                     "&page=" +
                     value + "&size=" + tabNuocUong.pageSizeNuocUong;
             } else {
-                urlNuocUong = "http://localhost:8081/api/v1/admin/nuoc-uong/find-all?page=" + value + "&size=" + tabNuocUong.pageSizeNuocUong;
+                urlNuocUong = "/api/v1/admin/nuoc-uong/find-all?page=" + value + "&size=" + tabNuocUong.pageSizeNuocUong;
 
             }
             callApiGetNuocUong(urlNuocUong);
@@ -364,11 +364,11 @@ var tabNuocUong = new Vue({
         },
         pageSizeSelectNuocUong(event) {
             if (parseInt(tabNuocUong.indexSearchNuocUong) === 1) {
-                urlNuocUong = "http://localhost:8081/api/v1/admin/nuoc-uong/find-by-name?tenNuocUong=" +
+                urlNuocUong = "/api/v1/admin/nuoc-uong/find-by-name?tenNuocUong=" +
                     tabNuocUong.tenNuocUongSearch +
                     "&size=" + event.target.value;
             } else {
-                urlNuocUong = "http://localhost:8081/api/v1/admin/nuoc-uong/find-all?size=" + event.target.value;
+                urlNuocUong = "/api/v1/admin/nuoc-uong/find-all?size=" + event.target.value;
 
             }
             callApiGetNuocUong(urlNuocUong);
@@ -410,7 +410,7 @@ function callApiGetNuocUong(url) {
 
 function exportExcelNuocUong() {
     $(".exportNuocUong").click(() => {
-        window.location.href = "http://localhost:8081/api/v1/admin/nuoc-uong/export";
+        window.location.href = "/api/v1/admin/nuoc-uong/export";
     });
 }
 

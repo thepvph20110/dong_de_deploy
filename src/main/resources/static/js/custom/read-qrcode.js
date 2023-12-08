@@ -85,7 +85,7 @@ $(document).ready(() => {
                             try {
                                 $.ajax({
                                     type: "POST",
-                                    url: "http://localhost:8081/api/v1/staff/camera/check-qr-code",
+                                    url: "/api/v1/staff/camera/check-qr-code",
                                     data: code.data,
                                     contentType: "application/json",
                                     success: function (response) {
@@ -158,7 +158,7 @@ $(document).ready(() => {
 function findByThoiGianCheckIn() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/api/v1/staff/find-time-check-in",
+        url: "/api/v1/staff/find-time-check-in",
         success: function (response) {
             timCheckIn = response.content;
         },

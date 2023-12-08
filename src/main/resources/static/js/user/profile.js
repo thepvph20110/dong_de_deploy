@@ -5,16 +5,16 @@ $(document).ready(() => {
 function callApiThongTin() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/api/v1/profile/thong-tin",
+        url: "/api/v1/profile/thong-tin",
         success: function (response) {
             if (response.statusCode === 'OK') {
                 thongTinCaNhan.profile = response.content;
             } else {
-                window.location.href = "http://localhost:8081/authentication/home-login";
+                window.location.href = "/authentication/home-login";
             }
         }, error: function (error) {
             console.log(error);
-            window.location.href = "http://localhost:8081/authentication/home-login";
+            window.location.href = "/authentication/home-login";
         }
     })
 }
@@ -87,7 +87,7 @@ var thongTinCaNhan = new Vue({
                 type: "PUT",
                 dataType: "json",
                 contentType: "application/json",
-                url: "http://localhost:8081/api/v1/profile/update",
+                url: "/api/v1/profile/update",
                 data: JSON.stringify(thongTinCaNhan.profile),
                 success: function (result) {
                     if (result.statusCode === 'OK') {
@@ -148,7 +148,7 @@ var thongTinCaNhan = new Vue({
         calApiCheckPass() {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8081/api/v1/profile/check-password",
+                url: "/api/v1/profile/check-password",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -159,7 +159,7 @@ var thongTinCaNhan = new Vue({
                     if (response.statusCode === 'OK') {
                         createAndShowToast("bg-success", "Thông báo!", "Đổi mật khẩu thành công!");
                         setTimeout(function () {
-                            window.location.href = "http://localhost:8081/authentication/home-login"
+                            window.location.href = "/authentication/home-login"
                         }, 2000);
                     } else {
                         createAndShowToast("bg-warning", "Thông báo!", "Mật khẩu cũ của bạn không đúng!");

@@ -1,4 +1,4 @@
-var  urlLichSu = "http://localhost:8081/api/v1/user/lich-su-giao-dich";
+var  urlLichSu = "/api/v1/user/lich-su-giao-dich";
 $(document).ready(()=>{
     callApiLichSuGiaoDichStaff(urlLichSu);
 });
@@ -80,10 +80,10 @@ var appLichSuGiaoDich = new Vue({
             return moment(date).format("HH:mm:ss DD-MM-YYYY");
         },
         searchByNamAndSdt(event){
-            var  url = "http://localhost:8081/api/v1/user/lich-su-giao-dich";
+            var  url = "/api/v1/user/lich-su-giao-dich";
             var  urlNew ="";
             if(event.target.value == '' || event.target.value == null){
-                callApiLichSuGiaoDichStaff("http://localhost:8081/api/v1/user/lich-su-giao-dich");
+                callApiLichSuGiaoDichStaff("/api/v1/user/lich-su-giao-dich");
                 return;
             }
             urlNew = url+ "/search?ten="+appLichSuGiaoDich.valueSeach+"&sdt="+appLichSuGiaoDich.valueSeach;
@@ -91,7 +91,7 @@ var appLichSuGiaoDich = new Vue({
             callApiLichSuGiaoDichStaff(urlNew);
         },
         pageTionLS(value) {
-            var  url = "http://localhost:8081/api/v1/user/lich-su-giao-dich";
+            var  url = "/api/v1/user/lich-su-giao-dich";
             var  urlNew ="";
             if (parseInt(appLichSuGiaoDich.indexSeachLS) === 1) {
                 urlNew = url+ "/search?ten="+appLichSuGiaoDich.valueSeach+"&sdt="+appLichSuGiaoDich.valueSeach+"&page="+value+"&size="+appLichSuGiaoDich.pageSize;
@@ -114,7 +114,7 @@ var appLichSuGiaoDich = new Vue({
             this.pageTionLS(parseInt(appLichSuGiaoDich.pageNumber) - 1);
         },
         pageSizeSelectLS(event) {
-            var  url = "http://localhost:8081/api/v1/user/lich-su-giao-dich";
+            var  url = "/api/v1/user/lich-su-giao-dich";
             var  urlNew ="";
             if (parseInt(appLichSuGiaoDich.indexSeachLS) === 1) {
                 urlNew = url+ "/search?ten="+appLichSuGiaoDich.valueSeach+"&sdt="+appLichSuGiaoDich.valueSeach+"&size="+event.target.value;

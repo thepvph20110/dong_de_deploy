@@ -19,7 +19,7 @@ $(document).ready(function () {
 function callApiLuatSan() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/api/v1/admin/luat-san/find-all",
+        url: "/api/v1/admin/luat-san/find-all",
         data: "json",
         success: function (response) {
             if (response.content.length == 0) {
@@ -74,7 +74,7 @@ function createLuatSan() {
 function apiCreateLuatSan() {
     $.ajax({
         type: "POST",
-        url: "http://localhost:8081/api/v1/admin/luat-san/create",
+        url: "/api/v1/admin/luat-san/create",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify({
@@ -104,7 +104,7 @@ function deleteLuatSan() {
                 $.ajax({
                     type: "DELETE",
                     url:
-                        "http://localhost:8081/api/v1/admin/luat-san/delete/" +
+                        "/api/v1/admin/luat-san/delete/" +
                         tab3.idLuatSan,
                     success: function (response) {
                         if (response.statusCode == "OK") {
@@ -139,7 +139,7 @@ function callApiFindById(id) {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://localhost:8081/api/v1/admin/luat-san/find-by/" + id,
+        url: "/api/v1/admin/luat-san/find-by/" + id,
         success: function (response) {
             quill.clipboard.dangerouslyPasteHTML(response.content.thongTin);
         },
@@ -167,7 +167,7 @@ function updateLuatSan() {
 function apiUpdateLoaiSan() {
     $.ajax({
         type: "PUT",
-        url: "http://localhost:8081/api/v1/admin/luat-san/update",
+        url: "/api/v1/admin/luat-san/update",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify({

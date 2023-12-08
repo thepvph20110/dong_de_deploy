@@ -1,4 +1,4 @@
-var urlCa = "http://localhost:8081/api/v1/admin/ca/find-all";
+var urlCa = "/api/v1/admin/ca/find-all";
 $(document).ready(()=>{
     callApiCa(urlCa);
     exportExcelCa();
@@ -6,7 +6,7 @@ $(document).ready(()=>{
 
 function exportExcelCa(){
     $(".exportExcelCa").click(()=>{
-       window.location.href = "http://localhost:8081/api/v1/admin/ca/export";
+       window.location.href = "/api/v1/admin/ca/export";
     });
 }
 
@@ -71,7 +71,7 @@ var  tabCa = new Vue({
                         type: "POST",
                         dataType: "json",
                         contentType: "application/json",
-                        url:"http://localhost:8081/api/v1/admin/ca/create",
+                        url:"/api/v1/admin/ca/create",
                         data:JSON.stringify({
                             tenCa: this.caCreate.tenCa,
                             thoiGianBatDau: thoiGianBatDau,
@@ -111,7 +111,7 @@ var  tabCa = new Vue({
                         type: "PUT",
                         dataType: "json",
                         contentType: "application/json",
-                        url:"http://localhost:8081/api/v1/admin/ca/update",
+                        url:"/api/v1/admin/ca/update",
                         data:JSON.stringify({
                             id: this.caDetail.id,
                             tenCa: this.caDetail.tenCa,
@@ -142,7 +142,7 @@ var  tabCa = new Vue({
         detailCaAdmin(id){
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8081/api/v1/admin/ca/find/"+id,
+                url: "/api/v1/admin/ca/find/"+id,
                 success: function(response){
                     tabCa.caDetail.id = response.content.id;
                     tabCa.caDetail.tenCa = response.content.tenCa;
@@ -167,7 +167,7 @@ var  tabCa = new Vue({
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "Delete",
-                        url:"http://localhost:8081/api/v1/admin/ca/delete/"+id,
+                        url:"/api/v1/admin/ca/delete/"+id,
                         success: function(response){
                             console.log(response);
                             if(response.statusCode ==='OK'){
@@ -207,7 +207,7 @@ var  tabCa = new Vue({
                     if (result.isConfirmed) {
                         $.ajax({
                             type: "POST",
-                            url: "http://localhost:8081/api/v1/admin/ca/import",
+                            url: "/api/v1/admin/ca/import",
                             dataType: "json",
                             contentType: false,
                             processData: false,
@@ -335,7 +335,7 @@ var  tabCa = new Vue({
         },
         searchByNameCa(event){
             $.ajax({
-                url:"http://localhost:8081/api/v1/admin/ca/search?name="+tabCa.nameSearchCa,
+                url:"/api/v1/admin/ca/search?name="+tabCa.nameSearchCa,
                 type:"GET",
                 success: function(response){
                     if(response.statusCode === 'OK'){
@@ -355,12 +355,12 @@ var  tabCa = new Vue({
         },
         pageTionCa(value) {
             if (parseInt(tabCa.indexSeachCa) === 1) {
-                urlCa = "http://localhost:8081/api/v1/admin/ca/search?name=" +
+                urlCa = "/api/v1/admin/ca/search?name=" +
                     tabCa.nameSearchCa +
                     "&page=" +
                     value + "&size=" + tabCa.pageSizeCa;
             } else {
-                urlCa = "http://localhost:8081/api/v1/admin/ca/find-all?page=" + value + "&size=" + tabCa.pageSizeCa;
+                urlCa = "/api/v1/admin/ca/find-all?page=" + value + "&size=" + tabCa.pageSizeCa;
 
             }
             callApiCa(urlCa);
@@ -379,11 +379,11 @@ var  tabCa = new Vue({
         },
         pageSizeSelectCa(event) {
             if (parseInt(tabCa.indexSeachCa) === 1) {
-                urlCa = "http://localhost:8081/api/v1/admin/ca/search?name=" +
+                urlCa = "/api/v1/admin/ca/search?name=" +
                     tabCa.nameSearchCa +
                     "&size=" + event.target.value;
             } else {
-                urlCa = "http://localhost:8081/api/v1/admin/ca/find-all?size=" + event.target.value;
+                urlCa = "/api/v1/admin/ca/find-all?size=" + event.target.value;
 
             }
             callApiCa(urlCa);

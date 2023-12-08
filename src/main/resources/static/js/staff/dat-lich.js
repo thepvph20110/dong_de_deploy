@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:8081/api/v1/staff";
+const apiUrl = "/api/v1/staff";
 let date;
 let reloadDate;
 
@@ -1074,7 +1074,7 @@ function setSelectBox(trangThai, idHoaDonSanCa) {
                                             class="dropdown-menu dropdown-menu-end"
                                         >
                                             <li>
-                                                <a href="http://localhost:8081/api/v1/staff/thanh-toan/thanh-toan-hoa-don/${idHoaDonSanCa}" class="dropdown-item">
+                                                <a href="/api/v1/staff/thanh-toan/thanh-toan-hoa-don/${idHoaDonSanCa}" class="dropdown-item">
                                                     Thanh toán
                                                 </a>
                                             </li>

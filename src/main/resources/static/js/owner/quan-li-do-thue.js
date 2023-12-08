@@ -1,5 +1,5 @@
 <!-- tab 6 start -->
-var urlDoThue = "http://localhost:8081/api/v1/admin/do-thue/find-all";
+var urlDoThue = "/api/v1/admin/do-thue/find-all";
 var tabDoThue = new Vue({
     el: ".tabDoThue",
     data: {
@@ -41,7 +41,7 @@ var tabDoThue = new Vue({
                     try {
                         $.ajax({
                             type: "POST",
-                            url: "http://localhost:8081/api/v1/admin/do-thue/save",
+                            url: "/api/v1/admin/do-thue/save",
                             contentType: "application/json",
                             data: JSON.stringify({
                                 tenDoThue: tabDoThue.doThue.tenDoThue,
@@ -81,7 +81,7 @@ var tabDoThue = new Vue({
                     try {
                         $.ajax({
                             type: "PUT",
-                            url: "http://localhost:8081/api/v1/admin/do-thue/update",
+                            url: "/api/v1/admin/do-thue/update",
                             contentType: "application/json",
                             data: JSON.stringify({
                                 id: tabDoThue.detailDoThueEntity.id,
@@ -121,7 +121,7 @@ var tabDoThue = new Vue({
                     try {
                         $.ajax({
                             type: "DELETE",
-                            url: "http://localhost:8081/api/v1/admin/do-thue/delete/" + id,
+                            url: "/api/v1/admin/do-thue/delete/" + id,
                             success: function (response) {
                                 if (response.statusCode === 'OK') {
                                     callApiGetDoThue(urlDoThue);
@@ -188,7 +188,7 @@ var tabDoThue = new Vue({
                     if (result.isConfirmed) {
                         $.ajax({
                             type: "POST",
-                            url: "http://localhost:8081/api/v1/admin/do-thue/import",
+                            url: "/api/v1/admin/do-thue/import",
                             dataType: "json",
                             contentType: false,
                             processData: false,
@@ -225,7 +225,7 @@ var tabDoThue = new Vue({
         uploadImage() {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8081/api/v1/admin/do-thue/upload-image",
+                url: "/api/v1/admin/do-thue/upload-image",
                 data: tabDoThue.imageFile,
                 processData: false, // Important!
                 contentType: false, // Important!
@@ -310,7 +310,7 @@ var tabDoThue = new Vue({
         detailDoThue(id) {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8081/api/v1/admin/do-thue/find/" + id,
+                url: "/api/v1/admin/do-thue/find/" + id,
                 success: function (response) {
                     tabDoThue.detailDoThueEntity.id = response.content.id;
                     tabDoThue.detailDoThueEntity.tenDoThue = response.content.tenDoThue;
@@ -329,22 +329,22 @@ var tabDoThue = new Vue({
         },
         tiemKiemTheoTenDoThue(event) {
 
-            var url = "http://localhost:8081/api/v1/admin/do-thue/find-by-name?tenDoThue=" + event.target.value;
+            var url = "/api/v1/admin/do-thue/find-by-name?tenDoThue=" + event.target.value;
             callApiGetDoThue(url);
             tabDoThue.indexSearchDoThue = 1;
             if (event.target.value === "" || event.target.value == null) {
                 tabDoThue.indexSearchDoThue = 0;
-                callApiGetDoThue("http://localhost:8081/api/v1/admin/do-thue/find-all");
+                callApiGetDoThue("/api/v1/admin/do-thue/find-all");
             }
         },
         pageTionDT(value) {
             if (parseInt(tabDoThue.indexSearchDoThue) === 1) {
-                urlDoThue = "http://localhost:8081/api/v1/admin/do-thue/find-by-name?tenDoThue=" +
+                urlDoThue = "/api/v1/admin/do-thue/find-by-name?tenDoThue=" +
                     tabDoThue.tenDoThueSearch +
                     "&page=" +
                     value + "&size=" + tabDoThue.pageSizeDoThue;
             } else {
-                urlDoThue = "http://localhost:8081/api/v1/admin/do-thue/find-all?page=" + value + "&size=" + tabDoThue.pageSizeDoThue;
+                urlDoThue = "/api/v1/admin/do-thue/find-all?page=" + value + "&size=" + tabDoThue.pageSizeDoThue;
 
             }
             callApiGetDoThue(urlDoThue);
@@ -363,11 +363,11 @@ var tabDoThue = new Vue({
         },
         pageSizeSelectDoThue(event) {
             if (parseInt(tabDoThue.indexSearchDoThue) === 1) {
-                urlDoThue = "http://localhost:8081/api/v1/admin/do-thue/find-by-name?tenDoThue=" +
+                urlDoThue = "/api/v1/admin/do-thue/find-by-name?tenDoThue=" +
                     tabDoThue.tenDoThueSearch +
                     "&size=" + event.target.value;
             } else {
-                urlDoThue = "http://localhost:8081/api/v1/admin/do-thue/find-all?size=" + event.target.value;
+                urlDoThue = "/api/v1/admin/do-thue/find-all?size=" + event.target.value;
 
             }
             callApiGetDoThue(urlDoThue);
@@ -409,7 +409,7 @@ function callApiGetDoThue(url) {
 
 function exportExcelDoThue() {
     $(".exportDoThue").click(() => {
-        window.location.href = "http://localhost:8081/api/v1/admin/do-thue/export";
+        window.location.href = "/api/v1/admin/do-thue/export";
     });
 }
 

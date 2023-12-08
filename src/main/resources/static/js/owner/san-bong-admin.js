@@ -12,7 +12,7 @@ var tab2 = new Vue({
             loaiSan: "",
             trangThai: 0,
         },
-        url: "http://localhost:8081/api/v1/admin/san-bong/find-all",
+        url: "/api/v1/admin/san-bong/find-all",
         indexSearch: 0,
         searchModelTenSB: "",
         arrSanBong: [],
@@ -52,7 +52,7 @@ var tab2 = new Vue({
         saveLoaiSan() {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8081/api/v1/admin/loai-san/create",
+                url: "/api/v1/admin/loai-san/create",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -62,7 +62,7 @@ var tab2 = new Vue({
                 success: function (response) {
                     createAndShowToast("bg-success","Thông báo!","Thao tác thành công!");
                     callApiLoaiSan();
-                    callApiSanBong("http://localhost:8081/api/v1/admin/san-bong/find-all");
+                    callApiSanBong("/api/v1/admin/san-bong/find-all");
                 },
             });
         },
@@ -99,18 +99,18 @@ var tab2 = new Vue({
         deleteLoaiSan(id) {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8081/api/v1/admin/loai-san/delete/" + id,
+                url: "/api/v1/admin/loai-san/delete/" + id,
                 success: function (response) {
                     createAndShowToast("bg-success","Thông báo!","Thao tác thành công!");
                     callApiLoaiSan();
-                    callApiSanBong("http://localhost:8081/api/v1/admin/san-bong/find-all");
+                    callApiSanBong("/api/v1/admin/san-bong/find-all");
                 },
             });
         },
         detailLoaiSan(id) {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8081/api/v1/admin/loai-san/find-by/" + id,
+                url: "/api/v1/admin/loai-san/find-by/" + id,
                 success: function (response) {
                     tab2.loaiSan.tenLoaiSan = response.content.tenLoaiSan;
                     tab2.loaiSan.id = response.content.id;
@@ -122,7 +122,7 @@ var tab2 = new Vue({
         updateLoaiSan() {
             $.ajax({
                 type: "PUT",
-                url: "http://localhost:8081/api/v1/admin/loai-san/update",
+                url: "/api/v1/admin/loai-san/update",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -133,7 +133,7 @@ var tab2 = new Vue({
                 success: function (response) {
                     createAndShowToast("bg-success","Thông báo!","Thao tác thành công!");
                     callApiLoaiSan();
-                    callApiSanBong("http://localhost:8081/api/v1/admin/san-bong/find-all");
+                    callApiSanBong("/api/v1/admin/san-bong/find-all");
                 },
             });
         },
@@ -163,7 +163,7 @@ var tab2 = new Vue({
         createSanBong() {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8081/api/v1/admin/san-bong/create",
+                url: "/api/v1/admin/san-bong/create",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -198,7 +198,7 @@ var tab2 = new Vue({
         deleteSanBong(id) {
             $.ajax({
                 type: "DELETE",
-                url: "http://localhost:8081/api/v1/admin/san-bong/delete/" + id,
+                url: "/api/v1/admin/san-bong/delete/" + id,
                 success: function (response) {
                     createAndShowToast("bg-success","Thông báo!","Thao tác thành công!");
                     callApiSanBong(tab2.url);
@@ -211,7 +211,7 @@ var tab2 = new Vue({
         detailSanBong(id) {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8081/api/v1/admin/san-bong/find-by/" + id,
+                url: "/api/v1/admin/san-bong/find-by/" + id,
                 success: function (response) {
                     tab2.sanBongUpdate.tenSanBong = response.content.tenSanBong;
                     tab2.sanBongUpdate.loaiSan = response.content.idLoaiSan;
@@ -239,7 +239,7 @@ var tab2 = new Vue({
         updateSanBong() {
             $.ajax({
                 type: "PUT",
-                url: "http://localhost:8081/api/v1/admin/san-bong/update",
+                url: "/api/v1/admin/san-bong/update",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -269,7 +269,7 @@ var tab2 = new Vue({
             $.ajax({
                 type: "GET",
                 url:
-                    "http://localhost:8081/api/v1/admin/san-bong/search?name=" +
+                    "/api/v1/admin/san-bong/search?name=" +
                     this.searchModelTenSB,
                 success: function (response) {
                     if (parseInt(response.content.data.length) == 0) {
@@ -293,7 +293,7 @@ var tab2 = new Vue({
     },
 });
 $(document).ready(function () {
-    var url = "http://localhost:8081/api/v1/admin/san-bong/find-all";
+    var url = "/api/v1/admin/san-bong/find-all";
     callApiLoaiSan();
     callApiSanBong(url);
     pageDirection();
@@ -316,7 +316,7 @@ function callApiSanBong(url) {
 function callApiLoaiSan() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/api/v1/admin/loai-san/find-all",
+        url: "/api/v1/admin/loai-san/find-all",
         success: function (response) {
             tab2.arrLoaiSan = response.content;
         },
@@ -343,11 +343,11 @@ function pageTion(value) {
     var url = "";
     if (parseInt(tab2.indexSearch) == 0) {
         url =
-            "http://localhost:8081/api/v1/admin/san-bong/find-all?page=" +
+            "/api/v1/admin/san-bong/find-all?page=" +
             value;
     } else {
         url =
-            "http://localhost:8081/api/v1/admin/san-bong/search?name=" +
+            "/api/v1/admin/san-bong/search?name=" +
             tab2.searchModelTenSB +
             "&page=" +
             value;
@@ -360,11 +360,11 @@ function pageSizeTion() {
         var url = "";
         if (parseInt(tab2.indexSearch) == 0) {
             url =
-                "http://localhost:8081/api/v1/admin/san-bong/find-all?pageSize=" +
+                "/api/v1/admin/san-bong/find-all?pageSize=" +
                 parseInt(event.target.value);
         } else {
             url =
-                "http://localhost:8081/api/v1/admin/san-bong/search?name=" +
+                "/api/v1/admin/san-bong/search?name=" +
                 tab2.searchModelTenSB +
                 "&pageSize=" +
                 parseInt(event.target.value);

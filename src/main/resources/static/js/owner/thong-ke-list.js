@@ -1,7 +1,7 @@
-let urlNgay = "http://localhost:8081/api/v1/admin/thong-ke/ngay";
-let urlTuan = "http://localhost:8081/api/v1/admin/thong-ke/tuan";
-let urlThang = "http://localhost:8081/api/v1/admin/thong-ke/thang";
-let urlNam = "http://localhost:8081/api/v1/admin/thong-ke/nam";
+let urlNgay = "/api/v1/admin/thong-ke/ngay";
+let urlTuan = "/api/v1/admin/thong-ke/tuan";
+let urlThang = "/api/v1/admin/thong-ke/thang";
+let urlNam = "/api/v1/admin/thong-ke/nam";
 $(document).ready(() => {
     callApiListThongKeNgay(urlNgay);
     callApiListThongKeTuan(urlTuan);
@@ -111,7 +111,7 @@ function filerByValue(className, parameters) {
             callApiListThongKe(url);
             return;
         }
-        url = "http://localhost:8081/api/v1/admin/thong-ke/list?" + parameters + "=" + event.target.value;
+        url = "/api/v1/admin/thong-ke/list?" + parameters + "=" + event.target.value;
         callApiListThongKe(url);
     });
 }

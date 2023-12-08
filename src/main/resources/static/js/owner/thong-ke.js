@@ -10,15 +10,15 @@ thangInNams();
 $(document).ready(() => {
     yearpick();
     $(".dateNam").val(new Date().getFullYear());
-    var url = "http://localhost:8081/api/v1/admin/thong-ke";
+    var url = "/api/v1/admin/thong-ke";
     $(".dateNam").change((event) => {
-        url = "http://localhost:8081/api/v1/admin/thong-ke?year=" + parseInt(event.target.value);
+        url = "/api/v1/admin/thong-ke?year=" + parseInt(event.target.value);
         array = [];
         arrayMonth();
         callAPIThongKeNam(url);
     })
     $(".dateNgay").change((event) => {
-        url = "http://localhost:8081/api/v1/admin/thong-ke?date=" + (event.target.value);
+        url = "/api/v1/admin/thong-ke?date=" + (event.target.value);
         arrayCaInDay = [0, 0, 0, 0];
         callAPIThongKeNam(url);
     });
@@ -50,11 +50,11 @@ $(document).ready(() => {
 
     //do thue start
     clickThongKe();
-    var url = "http://localhost:8081/api/v1/admin/thong-ke/do-thue";
+    var url = "/api/v1/admin/thong-ke/do-thue";
     callApiDoThue(url);
     $(".doThueNam").val(new Date().getFullYear());
     $(".doThueNam").change((event) => {
-        url = "http://localhost:8081/api/v1/admin/thong-ke/do-thue?year=" + (event.target.value);
+        url = "/api/v1/admin/thong-ke/do-thue?year=" + (event.target.value);
         arrayDoThue = [];
         arraySoLuongDoThue = [];
         callApiDoThue(url);
@@ -64,7 +64,7 @@ $(document).ready(() => {
     $(".doThueThang").change((event) => {
         var year = parseInt(event.target.value.split("-")[0]);
         var month = parseInt(event.target.value.split("-")[1]);
-        url = "http://localhost:8081/api/v1/admin/thong-ke/do-thue/thang?year=" + year + "&month=" + month;
+        url = "/api/v1/admin/thong-ke/do-thue/thang?year=" + year + "&month=" + month;
         arrayDoThue = [];
         arraySoLuongDoThue = [];
         callApiDoThue(url);
@@ -74,7 +74,7 @@ $(document).ready(() => {
         var year = parseInt(event.target.value.split("-")[0]);
         var month = parseInt(event.target.value.split("-")[1]);
         var day = parseInt(event.target.value.split("-")[2]);
-        url = "http://localhost:8081/api/v1/admin/thong-ke/do-thue/ngay?year=" + year + "&month=" + month + "&day=" + day;
+        url = "/api/v1/admin/thong-ke/do-thue/ngay?year=" + year + "&month=" + month + "&day=" + day;
         arrayDoThue = [];
         arraySoLuongDoThue = [];
         callApiDoThue(url);
@@ -83,11 +83,11 @@ $(document).ready(() => {
 
     //nuoc uong start
     checkHiddenDoThu();
-    var urlNU = "http://localhost:8081/api/v1/admin/thong-ke/nuoc-uong";
+    var urlNU = "/api/v1/admin/thong-ke/nuoc-uong";
     callApiNuocUong(urlNU);
     $(".nuocUongNam").val(new Date().getFullYear());
     $(".nuocUongNam").change((event) => {
-        urlNU = "http://localhost:8081/api/v1/admin/thong-ke/nuoc-uong?year=" + (event.target.value);
+        urlNU = "/api/v1/admin/thong-ke/nuoc-uong?year=" + (event.target.value);
         arrayNuocUong = [];
         arraySoLuongNuocUong = [];
         callApiNuocUong(urlNU);
@@ -96,7 +96,7 @@ $(document).ready(() => {
     $(".nuocUongThang").change((event) => {
         var year = parseInt(event.target.value.split("-")[0]);
         var month = parseInt(event.target.value.split("-")[1]);
-        urlNU = "http://localhost:8081/api/v1/admin/thong-ke/nuoc-uong/thang?year=" + year + "&month=" + month;
+        urlNU = "/api/v1/admin/thong-ke/nuoc-uong/thang?year=" + year + "&month=" + month;
         arrayNuocUong = [];
         arraySoLuongNuocUong = [];
         callApiNuocUong(urlNU);
@@ -106,7 +106,7 @@ $(document).ready(() => {
         var year = parseInt(event.target.value.split("-")[0]);
         var month = parseInt(event.target.value.split("-")[1]);
         var day = parseInt(event.target.value.split("-")[2]);
-        urlNU = "http://localhost:8081/api/v1/admin/thong-ke/nuoc-uong/ngay?year=" + year + "&month=" + month + "&day=" + day;
+        urlNU = "/api/v1/admin/thong-ke/nuoc-uong/ngay?year=" + year + "&month=" + month + "&day=" + day;
         arrayNuocUong = [];
         arraySoLuongNuocUong = [];
         callApiNuocUong(urlNU);
@@ -373,7 +373,7 @@ function checkHidden(number) {
         $(".doThueNam").val(new Date().getFullYear());
         arrayDoThue = [];
         arraySoLuongDoThue = [];
-        callApiDoThue("http://localhost:8081/api/v1/admin/thong-ke/do-thue");
+        callApiDoThue("/api/v1/admin/thong-ke/do-thue");
         return;
     }
     if (number === 2) {
@@ -383,7 +383,7 @@ function checkHidden(number) {
         ganValueInputMonth(".doThueThang");
         arrayDoThue = [];
         arraySoLuongDoThue = [];
-        callApiDoThue("http://localhost:8081/api/v1/admin/thong-ke/do-thue/thang");
+        callApiDoThue("/api/v1/admin/thong-ke/do-thue/thang");
         return;
     }
     if (number === 3) {
@@ -393,7 +393,7 @@ function checkHidden(number) {
         ganValueInputDate(".doThueNgay");
         arrayDoThue = [];
         arraySoLuongDoThue = [];
-        callApiDoThue("http://localhost:8081/api/v1/admin/thong-ke/do-thue/ngay");
+        callApiDoThue("/api/v1/admin/thong-ke/do-thue/ngay");
         return;
     }
 }
@@ -462,7 +462,7 @@ function checkHiddenDoThu() {
             $(".nuocUongNam").val(new Date().getFullYear());
             arrayNuocUong = [];
             arraySoLuongNuocUong = [];
-            callApiNuocUong("http://localhost:8081/api/v1/admin/thong-ke/nuoc-uong");
+            callApiNuocUong("/api/v1/admin/thong-ke/nuoc-uong");
             return;
         }
         if (number === 2) {
@@ -472,7 +472,7 @@ function checkHiddenDoThu() {
             ganValueInputMonth(".nuocUongThang");
             arrayNuocUong = [];
             arraySoLuongNuocUong = [];
-            callApiNuocUong("http://localhost:8081/api/v1/admin/thong-ke/nuoc-uong/thang");
+            callApiNuocUong("/api/v1/admin/thong-ke/nuoc-uong/thang");
             return;
         }
         if (number === 3) {
@@ -482,7 +482,7 @@ function checkHiddenDoThu() {
             ganValueInputDate(".nuocUongNgay");
             arrayNuocUong = [];
             arraySoLuongNuocUong = [];
-            callApiNuocUong("http://localhost:8081/api/v1/admin/thong-ke/nuoc-uong/ngay");
+            callApiNuocUong("/api/v1/admin/thong-ke/nuoc-uong/ngay");
             return;
         }
     });

@@ -59,7 +59,7 @@ var tabParam = new Vue({
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json",
-                url: "http://localhost:8081/api/v1/admin/sys-param/create",
+                url: "/api/v1/admin/sys-param/create",
                 data: JSON.stringify({
                     code: tabParam.param.code,
                     value: tabParam.param.value,
@@ -89,7 +89,7 @@ var tabParam = new Vue({
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "http://localhost:8081/api/v1/admin/sys-param/by-id/" + id,
+                url: "/api/v1/admin/sys-param/by-id/" + id,
                 success: function (response) {
                     tabParam.paramUpdate.id = response.content.id;
                     tabParam.paramUpdate.chucNang = response.content.chucNang;
@@ -149,7 +149,7 @@ var tabParam = new Vue({
                 type: "PUT",
                 dataType: "json",
                 contentType: "application/json",
-                url: "http://localhost:8081/api/v1/admin/sys-param/update",
+                url: "/api/v1/admin/sys-param/update",
                 data: JSON.stringify({
                     id: tabParam.paramUpdate.id,
                     value: tabParam.paramUpdate.value,
@@ -186,7 +186,7 @@ var tabParam = new Vue({
                     $.ajax({
                         type: "DELETE",
                         url:
-                            "http://localhost:8081/api/v1/admin/sys-param/delete/" + id,
+                            "/api/v1/admin/sys-param/delete/" + id,
                         success: function (response) {
                             if (response.statusCode == "OK") {
                                 createAndShowToast("bg-success","Thông báo",tabParam.success);
@@ -213,7 +213,7 @@ function callApiListParam() {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://localhost:8081/api/v1/admin/sys-param/find-all",
+        url: "/api/v1/admin/sys-param/find-all",
         success: function (response) {
             tabParam.listParam = response.content;
         },
@@ -227,7 +227,7 @@ function callApiListCodePaRam() {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://localhost:8081/api/v1/admin/sys-param/list-code",
+        url: "/api/v1/admin/sys-param/list-code",
         success: function (response) {
             tabParam.listCodeParam = response.content;
         },

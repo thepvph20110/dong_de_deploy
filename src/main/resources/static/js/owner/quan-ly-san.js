@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $(".deletebtn").click(function () {
         $.ajax({
-            url: "http://localhost:8081/admin/delete/" + $(this).data("id"),
+            url: "/admin/delete/" + $(this).data("id"),
             dataType: "json",
             method: "DELETE",
             success: function () {
@@ -19,7 +19,7 @@ $(document).ready(function () {
         var selectMS = $("#selectMS").empty();
 
         $.ajax({
-            url: "http://localhost:8081/admin/detail/" + $(this).data("id"),
+            url: "/admin/detail/" + $(this).data("id"),
             dataType: "json",
             method: "GET",
             success: function (data) {
@@ -60,11 +60,11 @@ $(document).ready(function () {
     })
     $(".select").change(function () {
         var valueSelect = $("#select").val();
-        window.location.href = 'http://localhost:8081/admin/manager?size=' + valueSelect;
+        window.location.href = '/admin/manager?size=' + valueSelect;
     })
     $(".btnSaveMs").click(function () {
         $.ajax({
-            url: "http://localhost:8081/admin/save-ms",
+            url: "/admin/save-ms",
             dataType: "json",
             contentType: "application/json",
             method: "POST",
@@ -84,7 +84,7 @@ $(document).ready(function () {
     })
     $(".btnSaveNsx").click(function () {
         $.ajax({
-            url: "http://localhost:8081/admin/save-nsx",
+            url: "/admin/save-nsx",
             dataType: "json",
             contentType: "application/json",
             method: "POST",

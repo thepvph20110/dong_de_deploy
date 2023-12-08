@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     //Get account by login
     $.ajax({
-        url: "http://localhost:8081/api/v1/staff/account",
+        url: "/api/v1/staff/account",
         type: "GET",
         success: function (response) {
             if (response.statusCode === "OK") {
@@ -18,7 +18,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             type: "POST",
-            url: "http://localhost:8081/api/v1/staff/giao-ca/khoi-tao-ca-lam",
+            url: "/api/v1/staff/giao-ca/khoi-tao-ca-lam",
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({
@@ -34,7 +34,7 @@ $(document).ready(function () {
                 if (response.statusCode === "OK") {
                     $.ajax({
                         type: "GET",
-                        url: "http://localhost:8081/api/v1/staff/giao-ca/view",
+                        url: "/api/v1/staff/giao-ca/view",
                         success: function (data) {
                             //đọc file html
                             // document.documentElement.innerHTML = data;
@@ -46,12 +46,12 @@ $(document).ready(function () {
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     confirm = true;
-                                    window.location.href = "http://localhost:8081/api/v1/staff/view-dat-lich";
+                                    window.location.href = "/api/v1/staff/view-dat-lich";
                                 }
                             });
                             setTimeout(() => {
                                 if (!confirm) {
-                                    window.location.href = "http://localhost:8081/api/v1/staff/view-dat-lich";
+                                    window.location.href = "/api/v1/staff/view-dat-lich";
                                 }
                             }, 3000);
                             return;

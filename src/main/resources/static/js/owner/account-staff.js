@@ -29,10 +29,10 @@ var tab1 = new Vue({
         deleteById(id) {
             $.ajax({
                 type: "DELETE",
-                url: "http://localhost:8081/api/v1/admin/account/delete/" + id,
+                url: "/api/v1/admin/account/delete/" + id,
                 success: function (response) {
                     createAndShowToast("bg-success","Thông báo!","Thao tác thành công!");
-                    callApi("http://localhost:8081/api/v1/admin/account/find-all");
+                    callApi("/api/v1/admin/account/find-all");
                 },
                 error: function (error) {
                     createAndShowToast("bg-danger","Thông báo!","Thao tác thất bại!");
@@ -76,7 +76,7 @@ var tab1 = new Vue({
         save() {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8081/api/v1/admin/account/create",
+                url: "/api/v1/admin/account/create",
                 dataType: "json",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -90,7 +90,7 @@ var tab1 = new Vue({
                     if (response.statusCode == "OK") {
                         createAndShowToast("bg-success","Thông báo!","Thao tác thành công!");
                         callApi(
-                            "http://localhost:8081/api/v1/admin/account/find-all"
+                            "/api/v1/admin/account/find-all"
                         );
                         return;
                     }
@@ -108,12 +108,12 @@ var tab1 = new Vue({
             $.ajax({
                 type: "GET",
                 url:
-                    "http://localhost:8081/api/v1/admin/account/search?sdt=" +
+                    "/api/v1/admin/account/search?sdt=" +
                     this.searchSDT,
                 success: function (response) {
                     if (response.content.data.length == 0) {
                         callApi(
-                            "http://localhost:8081/api/v1/admin/account/find-all"
+                            "/api/v1/admin/account/find-all"
                         );
                         tab1.countIndex = 0;
                         return;
@@ -132,7 +132,7 @@ var tab1 = new Vue({
 });
 
 $(document).ready(function () {
-    callApi("http://localhost:8081/api/v1/admin/account/find-all");
+    callApi("/api/v1/admin/account/find-all");
     $(".nextPage").click(() => {
         if (parseInt(tab1.curentPage + 1) == parseInt(tab1.totalPage)) {
             return;
@@ -164,13 +164,13 @@ function callApi(url) {
 }
 
 function pageTion(value) {
-    var url = "http://localhost:8081/api/v1/admin/account/find-all";
+    var url = "/api/v1/admin/account/find-all";
     if (tab1.countIndex == 0) {
         url =
-            "http://localhost:8081/api/v1/admin/account/find-all?page=" + value;
+            "/api/v1/admin/account/find-all?page=" + value;
     } else {
         url =
-            "http://localhost:8081/api/v1/admin/account/search?page=" +
+            "/api/v1/admin/account/search?page=" +
             value +
             "&sdt=" +
             tab1.searchSDT;
@@ -182,11 +182,11 @@ function pageSize() {
     $(".pageSizeSelect").change((event) => {
         if (tab1.countIndex == 0) {
             url =
-                "http://localhost:8081/api/v1/admin/account/find-all?pageSize=" +
+                "/api/v1/admin/account/find-all?pageSize=" +
                 parseInt(event.target.value);
         } else {
             url =
-                "http://localhost:8081/api/v1/admin/account/search?pageSize=" +
+                "/api/v1/admin/account/search?pageSize=" +
                 parseInt(event.target.value) +
                 "&sdt=" +
                 tab1.searchSDT;

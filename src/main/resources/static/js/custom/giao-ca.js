@@ -11,7 +11,7 @@ $(document).ready(() => {
     //get all giao ca
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/api/v1/staff/giao-ca",
+        url: "/api/v1/staff/giao-ca",
         success: (response) => {
             console.log(response);
             if (response.statusCode === 'OK') {
@@ -49,7 +49,7 @@ $(document).ready(() => {
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url: "http://localhost:8081/api/v1/staff/giao-ca/ket-ca",
+                url: "/api/v1/staff/giao-ca/ket-ca",
                 contentType: "application/json",
                 data: JSON.stringify({
                     thoiGianKetCa: app.formatDateTimeStamps($("#NowTime").val()),
@@ -106,7 +106,7 @@ $(document).ready(() => {
                     $.ajax({
                         type: "POST",
                         dataType: "json",
-                        url: "http://localhost:8081/api/v1/staff/giao-ca/ket-ca",
+                        url: "/api/v1/staff/giao-ca/ket-ca",
                         contentType: "application/json",
                         data: JSON.stringify({
                             thoiGianKetCa: app.formatDateTimeStamps($("#NowTime").val()),
@@ -160,7 +160,7 @@ $(document).ready(() => {
 function sendMailThongKe() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/static/send-mail-thong-ke",
+        url: "/static/send-mail-thong-ke",
     });
 }
 

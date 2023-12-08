@@ -6,7 +6,7 @@ for (var i = 1; i < table.rows.length; i++) {
         var id = this.querySelector(".hidden").textContent;
 
         if (id) {
-            var currentURL = 'http://localhost:8081/api/v1/admin/thanh-toan-hoa-don';
+            var currentURL = '/api/v1/admin/thanh-toan-hoa-don';
             var newURL = currentURL + '/' + id;
             window.location.href = newURL;
         }
