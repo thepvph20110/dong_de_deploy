@@ -168,6 +168,14 @@
                     <target>15</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.0.6</version>
+                <configuration>
+                    <mainClass>com.example.pro2111_dat_lich_san_bong.Pro2111DatLichSanBongApplication</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
