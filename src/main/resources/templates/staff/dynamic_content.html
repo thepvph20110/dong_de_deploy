@@ -3063,7 +3063,7 @@
         // }
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/api/v1/staff/doi-lich/one/" + id,
+            url: "/api/v1/staff/doi-lich/one/" + id,
             success: function (response) {
                 debugger
                 if (response.statusCode == 'ALREADY_REPORTED') {
@@ -3117,7 +3117,7 @@
     function callApiLoaiSanAndCaOne() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/api/v1/staff/doi-lich/list-san-list-ca",
+            url: "/api/v1/staff/doi-lich/list-san-list-ca",
             success: function (response) {
                 modalDL.listCa = response.content.ca,
                     modalDL.listLoaiSan = response.content.loaiSan
@@ -3132,7 +3132,7 @@
     function callApiPhanTramTienCoc() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/api/v1/staff/doi-lich/find-by-tien-coc",
+            url: "/api/v1/staff/doi-lich/find-by-tien-coc",
             success: function (response) {
                 modalDL.phanTramCoc = parseInt(response.content);
             },
@@ -3213,7 +3213,7 @@
 
                 $.ajax({
                     type: "GET",
-                    url: "http://localhost:8081/api/v1/staff/doi-lich/check-lick-dat?idLS=" + this.lichDatCu.idLoaiSan + "&idCa=" + this.lichDatCu.idCa + "&ngayDoi=" + $(".ngayMuonDoi").val(),
+                    url: "/api/v1/staff/doi-lich/check-lick-dat?idLS=" + this.lichDatCu.idLoaiSan + "&idCa=" + this.lichDatCu.idCa + "&ngayDoi=" + $(".ngayMuonDoi").val(),
                     success: function (response) {
                         if (response.content === 1) {
                             $(".modalCon").prop("hidden", true);
@@ -3250,7 +3250,7 @@
             updateLichOne() {
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost:8081/api/v1/staff/doi-lich/update-lich",
+                    url: "/api/v1/staff/doi-lich/update-lich",
                     dataType: "json",
                     contentType: "application/json",
                     data: JSON.stringify({
@@ -3276,7 +3276,7 @@
             findLichDat() {
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost:8081/api/v1/staff/tien-coc/one",
+                    url: "/api/v1/staff/tien-coc/one",
                     dataType: "json",
                     contentType: "application/json",
                     data: JSON.stringify({
@@ -3436,7 +3436,7 @@
                     type: "POST",
                     dataType: "json",
                     contentType: "application/json",
-                    url: "http://localhost:8081/api/v1/staff/san-ca/check-list-san-ca",
+                    url: "/api/v1/staff/san-ca/check-list-san-ca",
                     data: JSON.stringify(this.sanCaCheckRequest),
                     success: function (response) {
                         if (response.length > 0) {
@@ -3472,7 +3472,7 @@
                     type: 'POST',
                     dataType: 'JSON',
                     contentType: 'application/json',
-                    url: "http://localhost:8081/api/v1/staff/thanh-toan-nhieu/find-list-doi-lich",
+                    url: "/api/v1/staff/thanh-toan-nhieu/find-list-doi-lich",
                     data: JSON.stringify(app.listDataDoiLichNhieuRequest),
                     success: function (response) {
                         console.log(response);
@@ -3490,7 +3490,7 @@
                 }
                 $.ajax({
                     type: "GET",
-                    url: "http://localhost:8081/api/v1/staff/doi-lich/search-by-phone?phone="+event.target.value,
+                    url: "/api/v1/staff/doi-lich/search-by-phone?phone="+event.target.value,
                     dataType: "json",
                     success: function (response) {
                         console.log(response)
@@ -3512,7 +3512,7 @@
             },
             pageTionDoiLichNhanh(value) {
                 if (parseInt(app.countIndexDoiLichNhieu) === 1) {
-                    var url = "http://localhost:8081/api/v1/staff/doi-lich/search-by-phone?phone=" +
+                    var url = "/api/v1/staff/doi-lich/search-by-phone?phone=" +
                         app.soDienThoaiDoiLichSearch +
                         "&page=" +
                         value + "&size=" + app.pageSizeDoiLich;
@@ -3538,7 +3538,7 @@
                         },
                     });
                 } else {
-                    var url = "http://localhost:8081/api/v1/staff/doi-lich/list-lich-doi?page=" + value + "&size=" + app.pageSizeDoiLich;
+                    var url = "/api/v1/staff/doi-lich/list-lich-doi?page=" + value + "&size=" + app.pageSizeDoiLich;
                     $.ajax({
                         type: "GET",
                         url: url,
@@ -3571,7 +3571,7 @@
             },
             pageSizeSelectDoiLich(event) {
                 if (parseInt(app.countIndexDoiLichNhieu) === 1) {
-                    var url  = "http://localhost:8081/api/v1/staff/doi-lich/search-by-phone?phone=" +
+                    var url  = "/api/v1/staff/doi-lich/search-by-phone?phone=" +
                         app.soDienThoaiDoiLichSearch +
                         "&size=" + event.target.value;
                     $.ajax({
@@ -3596,7 +3596,7 @@
                         },
                     });
                 } else {
-                    var url  = "http://localhost:8081/api/v1/staff/doi-lich/list-lich-doi?size=" + event.target.value;
+                    var url  = "/api/v1/staff/doi-lich/list-lich-doi?size=" + event.target.value;
                     $.ajax({
                         type: "GET",
                         url: url,
@@ -3766,7 +3766,7 @@
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json",
-                url: "http://localhost:8081/api/v1/staff/san-ca/check-list-san-ca",
+                url: "/api/v1/staff/san-ca/check-list-san-ca",
                 data: JSON.stringify(app.sanCaCheckRequest),
                 success: function (response) {
                     if (response.length > 0) {
@@ -3792,7 +3792,7 @@
             type: 'POST',
             dataType: 'JSON',
             contentType: 'application/json',
-            url: "http://localhost:8081/api/v1/staff/doi-lich/update-lich-nhieu",
+            url: "/api/v1/staff/doi-lich/update-lich-nhieu",
             data: JSON.stringify(app.listDataDoiLichNhieuRequest),
             success: function (response) {
                 if (response.statusCode === 'OK') {
@@ -3902,7 +3902,7 @@
 
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/api/v1/staff/doi-lich/list-lich-doi",
+            url: "/api/v1/staff/doi-lich/list-lich-doi",
             dataType: "json",
             success: function (response) {
                 console.log(response)
@@ -3922,7 +3922,7 @@
     function callApiLoaiSanAndCaNhieu() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/api/v1/staff/doi-lich/find-all-loai-san-ca",
+            url: "/api/v1/staff/doi-lich/find-all-loai-san-ca",
             dataType: "json",
             success: function (response) {
                 app.arrCaDL = response.content.ca;
@@ -4046,7 +4046,7 @@
     function callApiPhanTramTienCocDoiLichNhieu() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/api/v1/staff/doi-lich/find-by-tien-coc",
+            url: "/api/v1/staff/doi-lich/find-by-tien-coc",
             success: function (response) {
                 app.phanTramTienCocLichNhieu = parseInt(response.content);
             },
@@ -4075,7 +4075,7 @@
     function deleteLichSan(id) {
         $.ajax({
             type: "DELETE",
-            url: "http://localhost:8081/api/v1/staff/huy-lich-dat-san/" + id,
+            url: "/api/v1/staff/huy-lich-dat-san/" + id,
             success: function (response) {
                 if(response.statusCode == 'OK'){
                     createAndShowToast("bg-success", "Thông báo", "Thao tác thành công!");
